@@ -1,9 +1,6 @@
 from os import environ
 environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
-import pyautogui
-import pytesseract
-import cv2
-import re
+import pyautogui, pytesseract, cv2, re
 import pygame, time
 
 def screenshot():
