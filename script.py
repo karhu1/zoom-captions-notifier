@@ -3,8 +3,11 @@ environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 import pyautogui, pytesseract, cv2, re
 import pygame, time
 
+# region=(775, 940, 350, 90) MIDDLE OF SCREEN
+
+
 def screenshot():
-  screenshot = pyautogui.screenshot(region=(775, 940, 350, 90))
+  screenshot = pyautogui.screenshot(region=(300, 890, 350, 90))
 
   screenshot.save('screenshot.png')
 
@@ -12,8 +15,6 @@ def ocr_core(img):
   pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
   text = pytesseract.image_to_string(img)
   return text
-
-
 
 # MAKE GRAYSCALE
 def get_grayscale(image):
@@ -34,7 +35,7 @@ while True:
   img = thresholding(img)
   # img = remove_noise(img)
 
-  target_phrases = ['canvas', 'lecture post', 'post', 'lecture']
+  target_phrases = ['canvas', 'lecture post']
   matches = [phrase for phrase in target_phrases if re.search(phrase, ocr_core(img), re.IGNORECASE)]
 
   print(matches)
